@@ -3,4 +3,12 @@
 
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
+    <string-array name ="countries">
+        <item>Albania</item>
+        <item>Algeria</item>
+        <item>Armenia</item>
+        <item>Andora</item>
+        <item>Angola</item>
+        <item>Argentina</item>
+    </string-array>
 </resources>

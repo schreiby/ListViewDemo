@@ -13,14 +13,24 @@ import android.widget.Toast;
 
 public class MainActivity extends ListActivity {
 
-    private String[] countries = {"Albania", "Algeria", "Armenia", "Andora", "Angola", "Argentina", "Australia", "Bahrain",
+   /* The following used in initial commit:
+   private String[] countries = {"Albania", "Algeria", "Armenia", "Andora", "Angola", "Argentina", "Australia", "Bahrain",
             "Bangladesh", "Barbados", "Brazil", "China", "Denmark", "Egypt", "France", "Ghana", "Hong Kong", "India", "Italy",
-            "United Kingdom", "United States", "United Arab Emirates"};
+            "United Kingdom", "United States", "United Arab Emirates"};*/
+
+    //Used in second version:
+    private String[] countries;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        /* The following used in initial commit:
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, countries);
+        setListAdapter(adapter);*/
+
+        //Used in second version:
+        countries = getResources().getStringArray(R.array.countries);
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, countries);
         setListAdapter(adapter);
     }
