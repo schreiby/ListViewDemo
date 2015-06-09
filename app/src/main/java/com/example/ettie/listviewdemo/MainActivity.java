@@ -10,35 +10,32 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
-
 public class MainActivity extends ListActivity {
 
-   // The following used in ALL VERSIONS EXCEPT VERSION TWO:
-   private String[] countries = {"Albania", "Algeria", "Armenia", "Andora", "Angola", "Argentina", "Australia", "Bahrain",
+    private String[] countries = {"Albania", "Algeria", "Armenia", "Andora", "Angola", "Argentina", "Australia", "Bahrain",
             "Bangladesh", "Barbados", "Brazil", "China", "Denmark", "Egypt", "France", "Ghana", "Hong Kong", "India", "Italy",
             "United Kingdom", "United States", "United Arab Emirates"};
-
-    /*Used in second version:
-    private String[] countries;*/
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
 
-        /* The following used in initial commit:
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, countries);
-        setListAdapter(adapter);*/
-
-        /*Used in second version:
-        countries = getResources().getStringArray(R.array.countries);
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, countries);
-        setListAdapter(adapter);*/
-
-        //VERSION THREE: MULTI-ITEM SUPPORT:
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_checked, countries);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_checked,countries);
         ListView listView = getListView();
         listView.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
         setListAdapter(adapter);
+    }
+
+    public void showSelectedItems(View v) {
+        ListView listView = getListView();
+        String itemsSelected = "Selected Items: \n";
+        for (int i = 0; i < listView.getCount(); i++) {
+            if(listView.isItemChecked(i)) {
+                itemsSelected += listView.getItemAtPosition(i) + "\n";
+            }
+        }
+        Toast.makeText(this, itemsSelected, Toast.LENGTH_LONG).show();
     }
 
     @Override
